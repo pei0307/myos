@@ -37,9 +37,10 @@ install:mykernel.bin
 run: mykernel.iso
 	(killall VirtailBox && sleep 1) || true
 	VirtualBox --startvm "My Operating System" &
-runs: mykernel.iso
-	prlctl delete myos
-	prlctl create myos --ostype other
-	prlctl set myos --device-set cdrom0 --image '/Users/pei/Documents/myos/mykernel.iso' --enable --connect 	
+runs: 
+	# prlctl delete myos
+	# prlctl create myos --ostype other
+	prlctl stop myos --kill
+	prlctl set myos --device-set cdrom0 --image '/Users/pei/mykernel.iso' --enable --connect 	
 	prlctl start myos
  
